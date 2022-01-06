@@ -1,0 +1,43 @@
+Link to Problem :-
+https://practice.geeksforgeeks.org/problems/array-pair-sum-divisibility-problem3257/1
+
+Code :-
+
+class Solution {
+  public:
+    bool canPair(vector<int> nums, int k) {
+        // Code here.
+        if(nums.size()%2==1)
+        return false;
+    int sum=0;
+    unordered_map<int,int> m;
+    for(int i=0 ; i<nums.size();i++){
+        sum += nums[i];
+        nums[i]=nums[i]%k;
+        m[nums[i]]++;
+    }
+    if(sum%k!=0)
+    return false;
+    for(int i=0 ; i<nums.size() ; i++){
+        if(nums[i]==0){
+            m[nums[i]]=m[nums[i]]-2;
+            if(m[nums[i]]%2==1)
+            return false;
+            continue;
+        }
+        if(m[nums[i]]==0 && m[k-nums[i]]==0)
+        continue;
+        if(m[nums[i]]==0 && m[k-nums[i]]!=0)
+        return false;
+        if(m[nums[i]]!=0 && m[k-nums[i]]==0)
+        return false;
+        if(m.count(k-nums[i])>0){
+            m[nums[i]]--;
+            m[k-nums[i]]--;
+        }
+        else
+        return false;
+    }
+    return true;
+    }
+};

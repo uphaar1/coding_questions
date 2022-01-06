@@ -1,0 +1,24 @@
+Link to problem :
+https://practice.geeksforgeeks.org/problems/run-length-encoding/1/
+
+
+Code :-
+
+
+string encode(string src)
+{     
+  //Your code here 
+  string s="";
+  for(int i=0 ; i<src.size() ; ){
+      char ch = src[i];
+      int temp=0;
+      while(ch==src[i] && i<src.size()){
+          i++;
+          temp++;
+      }
+      s = s+ch+to_string(temp);
+  }
+  return s;
+}     
+
+

@@ -1,0 +1,26 @@
+Link to Problem :
+https://practice.geeksforgeeks.org/problems/number-following-a-pattern3126/1
+
+Code :-
+
+class Solution{   
+public:
+    string printMinNumberForPattern(string S){
+        // code here 
+        int count=0,val=2;
+        string m="1";
+        for(int i=0 ; i<S.size() ; i++){
+            if(S[i]=='D'){
+                string s1=m.substr(0,count);
+            string s2=m.substr(count,m.size()-count);
+            m = s1+to_string(val)+s2;
+            }
+            else{
+                m = m+to_string(val);
+                count = m.size()-1;
+            }
+            val++;
+        }
+        return m;
+    }
+};

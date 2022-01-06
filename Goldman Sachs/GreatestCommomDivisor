@@ -1,0 +1,45 @@
+Link to problem :-
+https://leetcode.com/problems/greatest-common-divisor-of-strings/
+
+Code :-
+
+class Solution {
+public:
+    string gcdOfStrings(string str1, string str2) {
+        if(str2.size()<str1.size()){
+            string temp=str1;
+          str1=str2;
+          str2=temp;
+        }
+        int len1 = str1.size();
+        int len2 = str2.size();
+        if(len1==len2){
+            if(str1==str2)
+                return str1;
+            else
+                return "";
+        }
+        for(int i=str2.size()-1 ; i>=1 ; i--){
+            int temp=(len1)%i;
+            if(temp>0)
+                continue;
+            string s=str2.substr(0,i);
+            string p="";
+            while(p.size()<str1.size()){
+                p += s;
+            }
+            if(p!=str1)
+                continue;
+            int temp2 = len2%i;
+            if(temp2>0)
+                continue;
+            p.clear();
+            while(p.size()<str2.size()){
+                p += s;
+            }
+            if(p==str2)
+                return s;
+        }
+        return "";
+    }
+};

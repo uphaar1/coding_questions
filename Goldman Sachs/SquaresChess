@@ -1,0 +1,13 @@
+Link to Problem :-
+https://practice.geeksforgeeks.org/problems/squares-in-nn-chessboard1801/1
+
+Code :-
+
+class Solution {
+  public:
+    long long squaresInChessBoard(long long N) {
+        // code here
+        long long int temp = (N*(N+1)/2)*(2*N+1)/3;
+        return temp;
+    }
+};
